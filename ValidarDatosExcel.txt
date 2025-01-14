@@ -1,0 +1,38 @@
+En este archivo presentaremos cómo configurar facilmente una Validación de Datos para que toda una columna 
+o rango de celdas acepten unicamente numeros.
+
+Paso a Paso para Configurar Validación de Datos
+
+Seleccionar la Columna B:
+
+Haz clic en la letra "B" en la parte superior de la columna para seleccionar toda la columna.
+Abrir el Menú de Validación de Datos:
+
+Ve a la pestaña "Datos" en la cinta de opciones.
+Haz clic en "Validación de datos" en el grupo de herramientas de datos.
+Configurar la Validación:
+
+En la ventana de Validación de datos, en la pestaña "Configuración", selecciona "Número entero" o "Decimal" en el menú desplegable de "Permitir".
+Número entero: Si solo quieres permitir números enteros.
+Decimal: Si también quieres permitir números con decimales.
+Establecer las Condiciones:
+
+Si seleccionaste "Número entero", puedes establecer un rango. Por ejemplo:
+Mínimo: 0
+Máximo: 100
+Si seleccionaste "Decimal", establece también los límites deseados.
+Mensajes de Error (Opcional):
+
+Ve a la pestaña "Mensaje de error" para personalizar el mensaje que se mostrará si alguien intenta ingresar un valor no válido.
+Aceptar:
+
+Haz clic en "Aceptar" para aplicar la validación.
+Fórmula Excel para Validar Números
+Si deseas usar una fórmula para validar que la celda B2 contenga solo números, puedes usar la siguiente fórmula en la validación de datos:
+
+Copiar
+=ESNUM(B2)
+Notas Adicionales
+Si deseas aplicar la validación a un rango específico (por ejemplo, B2:B100), asegúrate de ajustar la selección inicial en el primer paso.
+Recuerda que la validación de datos no detiene a los usuarios de ingresar datos no válidos si se ingresan directamente en la celda, pero mostrará un mensaje de advertencia.
+Con estos pasos, deberías poder configurar la columna B para aceptar únicamente números.
