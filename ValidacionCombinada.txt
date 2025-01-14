@@ -1,0 +1,37 @@
+Paso a Paso para Configurar Validación de Datos Numéricos y Evitar Duplicados
+Seleccionar la Columna B, por ejemplo:
+
+Haz clic en la letra "B" en la parte superior de la columna para seleccionar toda la columna.
+Abrir el Menú de Validación de Datos:
+
+Ve a la pestaña "Datos" en la cinta de opciones.
+Haz clic en "Validación de datos" en el grupo de herramientas de datos.
+Configurar la Validación para Números:
+
+En la ventana de Validación de datos, en la pestaña "Configuración", selecciona "Número entero" o "Decimal" en el menú desplegable de "Permitir".
+Establece las condiciones necesarias (por ejemplo, mínimo 0 y máximo 100).
+Agregar Validación para Evitar Duplicados:
+
+Aún en la ventana de Validación de datos, cambia el menú desplegable de "Permitir" a "Fórmula".
+En el campo de "Fórmula", ingresa la siguiente fórmula para evitar duplicados:
+Copiar
+=Y(ESNUM(B2), CONTAR.SI(B:B, B2) = 1)
+Esta fórmula hace lo siguiente:
+
+ESNUM(B2): Verifica que el valor en B2 sea un número.
+CONTAR.SI(B:B, B2) = 1: Asegura que el valor en B2 aparezca solo una vez en la columna B.
+Mensajes de Error (Opcional):
+
+Ve a la pestaña "Mensaje de error" para personalizar el mensaje que se mostrará si alguien intenta ingresar un número que ya existe.
+Aceptar:
+
+Haz clic en "Aceptar" para aplicar ambas validaciones.
+Resumen de la Fórmula Combinada
+La fórmula combinada que utilizas en la validación de datos es:
+
+Copiar
+=Y(ESNUM(B2), CONTAR.SI(B:B, B2) = 1)
+Notas Adicionales
+Asegúrate de aplicar esta validación a todo el rango deseado (por ejemplo, B2:B100) para que funcione correctamente.
+Recuerda que la validación de datos solo previene la entrada de datos no válidos, pero no eliminará los datos que ya están en la columna.
+Con estos pasos, podrás restringir el ingreso de datos repetidos en la columna B mientras aseguras que solo se ingresen números.
