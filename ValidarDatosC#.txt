@@ -1,0 +1,57 @@
+Para validar datos repetidos en una columna específica de una base de datos en C#, puedes utilizar ADO.NET para realizar una consulta que verifique si ya existe un valor en el campo "Correlativo". A continuación, te muestro un ejemplo de cómo hacerlo.
+
+Ejemplo de Código C#
+Copiar
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+class Program
+{
+    static void Main()
+    {
+        string connectionString = "tu_cadena_de_conexion"; // Cambia esto por tu cadena de conexión
+        string correlativoNuevo = "12345"; // El nuevo correlativo que deseas validar
+
+        if (EsCorrelativoDuplicado(connectionString, correlativoNuevo))
+        {
+            Console.WriteLine("El correlativo ya existe en la base de datos.");
+        }
+        else
+        {
+            Console.WriteLine("El correlativo es único y se puede agregar.");
+            // Aquí puedes agregar el código para insertar el nuevo correlativo en la base de datos
+        }
+    }
+
+    static bool EsCorrelativoDuplicado(string connectionString, string correlativo)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            string query = "SELECT COUNT(*) FROM TuTabla WHERE Correlativo = @Correlativo"; // Cambia 'TuTabla' por el nombre de tu tabla
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Correlativo", correlativo);
+
+            connection.Open();
+            int count = (int)command.ExecuteScalar();
+            return count > 0; // Retorna true si hay duplicados
+        }
+    }
+}
+Explicación del Código
+Cadena de Conexión: Asegúrate de reemplazar "tu_cadena_de_conexion" con la cadena de conexión a tu base de datos.
+
+Correlativo Nuevo: Cambia el valor de correlativoNuevo a lo que deseas validar.
+
+Método EsCorrelativoDuplicado:
+
+Este método recibe la cadena de conexión y el correlativo a validar.
+Se establece una conexión a la base de datos y se ejecuta una consulta SQL que cuenta cuántas veces aparece el correlativo en la tabla especificada.
+Retorna true si el conteo es mayor que 0, lo que indica que hay duplicados.
+Uso del Método: En el Main, se llama al método para verificar si el correlativo ya existe y se muestra un mensaje correspondiente.
+
+Notas
+Asegúrate de manejar excepciones adecuadamente en un entorno de producción.
+Considera usar async/await si estás trabajando en una aplicación que requiere una interfaz de usuario responsiva.
+Cambia "TuTabla" por el nombre real de tu tabla en la base de datos.
+Con este código, podrás validar si un correlativo ya existe en la base de datos antes de realizar una inserción. 
