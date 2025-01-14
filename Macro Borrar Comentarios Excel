@@ -1,0 +1,10 @@
+Sub BorrarComentarios()
+    Dim celda As Range
+    ' Recorre todas las celdas con comentarios en la hoja activa
+    For Each celda In ActiveSheet.UsedRange
+        If Not celda.Comment Is Nothing Then
+            celda.Comment.Delete
+        End If
+    Next celda
+    MsgBox "Se han eliminado todos los comentarios de la hoja activa.", vbInformation
+End Sub
