@@ -1,0 +1,10 @@
+Sub QuitarErrores()
+    Dim celda As Range
+    ' Recorre todas las celdas usadas en la hoja activa
+    For Each celda In ActiveSheet.UsedRange
+        If IsError(celda.Value) Then
+            celda.Value = "" ' Reemplaza el error con una celda vacía
+        End If
+    Next celda
+    MsgBox "Se han reemplazado todos los errores con celdas vacías.", vbInformation
+End Sub
